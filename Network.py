@@ -4,60 +4,95 @@
 import numpy as np
 import sys
 import os
+from keras import optimizers
 from keras.models import Sequential, load_model
 from keras.layers import Dense
 from keras.layers import Dropout
 from keras.layers import LSTM
 from keras.utils import np_utils
-from keras.callbacks import ModelCheckpoint
+from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
-# Find next number in sequence for saving model.
-model_list = (os.listdir('./Models/'))
-
-biggest_num = 0
-
-for i in range(len(model_list) - 1):
-    x = model_list[i]
-    x = int(x[6:-3])
-    if x > biggest_num:
-        biggest_num = x
-
-model_num = biggest_num + 1
-
 ################################################################
+
 
 ##############
 # Parameters #
 ##############
 
-# Path of text to train from.
+
+# Training text path.
 INPUT_TEXT_PATH = './Input/input.txt'
-# Path where model will output to / load from.
-MODEL_PATH_L = './Models/model ' + str(model_num - 1) + '.h5'
-MODEL_PATH_O = './Models/model ' + str(model_num) + '.h5'
+# Name models will save to / load from.
+# Make sure to include a space after the model name. ex: 'model '
+MODEL_NAME = 'model '
+# Path where model will output to / load from. Will be h5 file-type.
+model_path_l = './Models/'
+model_path_o = './Models/'
+# Sequential saving toggle.
+# Sequential:
+# Load: Highest saved model number.
+# Save: Next highest (if training).
+# Non-sequential:
+# Load: Specified model number.
+# Save: Specified model number (if training).
+SEQUENTIAL = True
+# Model number to load if using non-sequential mode.
+MODEL_SPEC = 0
 # Number of epochs to train for.
 EPOCHS = 10
-BATCH_SIZE = 150
+BATCH_SIZE = 120
+# Adam optimizer learning rate.
+# LEARN_RATE = 0.001
+LEARN_RATE = 0.001
+# Threshold of epochs allowed with no loss improvement.
+EARLY_STOP = 3
 # Sequence starting point.
 # OUTPUT_START = 0
-OUTPUT_START = 0
+OUTPUT_START = 1000
 # Sequence length until prediction starts.
 # SEQUENCE_LENGTH = 120
 SEQUENCE_LENGTH = 120
 # Length of prediction.
 # PRED_LENGTH = 100
-PRED_LENGTH = 100
+PRED_LENGTH = 250
 # Flag for if loading model from file.
 LOAD_MODEL = True
 # Flag for if training model.
-TRAINING = True
+TRAINING = False
+# Flag for if checking accuracy of model.
+TEST_ACC = False
 
 ################################################################
 
+if SEQUENTIAL:
+
+    model_list = (os.listdir(model_path_l))
+
+    biggest_num = 0
+
+    for i in range(len(model_list)):
+        x = model_list[i]
+        if x.find(MODEL_NAME) == -1:
+            continue
+        st = x.find(MODEL_NAME) + len(MODEL_NAME)
+        x = int(x[st:-3])
+        if x > biggest_num:
+            biggest_num = x
+
+    model_num = biggest_num + 1
+
+    model_path_l += (MODEL_NAME + str(model_num - 1) + '.h5')
+    model_path_o += (MODEL_NAME + str(model_num) + '.h5')
+
+else:
+
+    model_path_l += (MODEL_NAME + str(MODEL_SPEC) + '.h5')
+    model_path_o = model_path_l
+
 # Import text to train with and set to lowercase.
-print("Importing text...")
+print("Importing and sorting text...")
 
 input_text = open(INPUT_TEXT_PATH).read()
 input_text = input_text.lower()
@@ -91,38 +126,48 @@ print("Unique Characters:", len(chars))
 # Design model for training.
 model = Sequential()
 model.add(LSTM(250, input_shape=(X_modified.shape[1], X_modified.shape[2]),
-          return_sequences=True))
+               return_sequences=True))
 model.add(Dropout(0.3))
 model.add(LSTM(250, return_sequences=True))
 model.add(Dropout(0.2))
 model.add(LSTM(250))
-model.add(Dropout(0.2))
+model.add(Dropout(0.1))
 model.add(Dense(Y_modified.shape[1], activation='softmax'))
-
-model.compile(loss='categorical_crossentropy', optimizer='adam')
+adam = optimizers.Adam(lr=LEARN_RATE)
+model.compile(loss='categorical_crossentropy', optimizer=adam)
 
 if LOAD_MODEL:
 
-    if model_num - 1 == 0:
+    if SEQUENTIAL:
 
-        sys.exit("No model file to load.")
+        if model_num - 1 == 0:
 
-    else:
+            sys.exit("No model file to load.")
 
-        model = load_model(MODEL_PATH_L)
-        print("Model loaded from", MODEL_PATH_L)
+    try:
+        model = load_model(model_path_l)
+    except OSError:
+        sys.exit("Specified model doesn't exist.")
+
+    print("Model loaded from", model_path_l)
 
 if TRAINING:
-
-    checkpoint = ModelCheckpoint(MODEL_PATH_O, monitor='loss', verbose=1,
+    checkpoint = ModelCheckpoint(model_path_o, monitor='loss', verbose=1,
                                  save_best_only=True, mode='min')
-    cb_list = [checkpoint]
+    early_s = EarlyStopping(monitor='loss', patience=EARLY_STOP, verbose=1)
+    cb_list = [checkpoint, early_s]
     model.fit(X_modified, Y_modified, epochs=EPOCHS, batch_size=BATCH_SIZE,
               callbacks=cb_list)
 
 if not TRAINING and not LOAD_MODEL:
 
-    sys.exit("Can't generate text without training or loading model.")
+    sys.exit("Can't generate text without training/loading model.")
+
+if TEST_ACC:
+
+    print("Evaluating accuracy...")
+    score = model.evaluate(X_modified, Y_modified, verbose=1)
+    print("Model Accuracy: %.3f" % (score * 100))
 
 print("Generating text...")
 
