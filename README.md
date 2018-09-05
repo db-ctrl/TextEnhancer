@@ -1,3 +1,4 @@
 # LSTM RNN
-Generates text from an input file.
-(*Placeholder. Expand this.*)
+Generates text predictions from an input file.
+
+(*In development program. README will be expanded when feature complete.*)
