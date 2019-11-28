@@ -24,13 +24,13 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 # Training text path.
-INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/sonnets.txt'
+INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/Input/sonnets.txt'
 # Name models will save to / load from.
 # Make sure to include a space after the model name. ex: 'model '
 MODEL_NAME = 'SimpleModel '
 # Path where model will output to / load from. Will be h5 file-type.
-model_path_l = './Models/'
-model_path_o = './Models/'
+model_path_l = '/Users/david/PycharmProjects/LSTM-Text-Generator/Models/'
+model_path_o = '/Users/david/PycharmProjects/LSTM-Text-Generator/Models/'
 # Sequential saving toggle.
 # Sequential:
 # Load: Highest saved model number.
@@ -59,9 +59,9 @@ SEQUENCE_LENGTH = 120
 # PRED_LENGTH = 100
 PRED_LENGTH = 250
 # Flag for if loading model from file.
-LOAD_MODEL = True
+LOAD_MODEL = False
 # Flag for if training model.
-TRAINING = False
+TRAINING = True
 # Flag for if checking accuracy of model.
 TEST_ACC = False
 
