@@ -12,6 +12,7 @@ from keras.layers import LSTM
 from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 ################################################################
@@ -23,10 +24,10 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 
 # Training text path.
-INPUT_TEXT_PATH = './Input/input.txt'
+INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/sonnets.txt'
 # Name models will save to / load from.
 # Make sure to include a space after the model name. ex: 'model '
-MODEL_NAME = 'model '
+MODEL_NAME = 'SimpleModel '
 # Path where model will output to / load from. Will be h5 file-type.
 model_path_l = './Models/'
 model_path_o = './Models/'
@@ -46,7 +47,7 @@ BATCH_SIZE = 120
 # Adam optimizer learning rate.
 # LEARN_RATE = 0.001
 LEARN_RATE = 0.001
-# Threshold of epochs allowed with no loss improvement.
+# Threshold of   allowed with no loss improvement.
 EARLY_STOP = 3
 # Sequence starting point.
 # OUTPUT_START = 0
