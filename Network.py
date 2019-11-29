@@ -42,7 +42,7 @@ SEQUENTIAL = True
 # Model number to load if using non-sequential mode.
 MODEL_SPEC = 0
 # Number of epochs to train for.
-EPOCHS = 10
+EPOCHS = 1
 BATCH_SIZE = 120
 # Adam optimizer learning rate.
 # LEARN_RATE = 0.001
