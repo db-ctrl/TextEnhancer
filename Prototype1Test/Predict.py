@@ -18,7 +18,7 @@ def getSent(model, iters, minLength=1):
         madeSentence = madeSentence.strip()
         if numWords == 0: continue
 
-        # These commonly appear if you are using reddit data so I ignore them
+        # Commonly occurring words can be ignored
         if "am a bot" in madeSentence.lower(): continue
         if "questions or concerns" in madeSentence.lower(): continue
         if "contact the moderators" in madeSentence.lower(): continue
@@ -32,9 +32,8 @@ def getSent(model, iters, minLength=1):
 
     # Get the sentences as (sentence, score) pairs
     sentences = sentences.items()
-
     # Sort them so the sentences with the highest score appear first
-    # TODO: fix the below function to be compatible with the rules of pythonn3.0
-    sentences.sort(key=lambda x: -x[1])
+
+    sorted(sentences, key=lambda x: -x[1])
 
     return sentences

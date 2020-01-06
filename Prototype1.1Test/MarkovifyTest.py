@@ -9,7 +9,7 @@ text_model = markovify.Text(text)
 # generate 100 and choose the 5th. 1st line boring, hgh line it starts not making sense, so 5 seemed good.
 
 model = markovify.Text(text) # get your model as normal
-Predict.getSent(model, 100, 4)#[5]
+print(Predict.getSent(model, 100, 4))
 
 
 # Print five randomly-generated sentences
