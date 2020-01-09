@@ -5,8 +5,9 @@ from textstat.textstat import textstatistics, easy_word_set, legacy_round
 # Splits the text into sentences, using
 # Spacy's sentence segmentation which can
 # be found at https://spacy.io/usage/spacy-101
+
 def break_sentences(text):
-    nlp = spacy.load('en')
+    nlp = spacy.load('en_core_web_sm')
     doc = nlp(text)
     return doc.sents
 
@@ -22,6 +23,7 @@ def word_count(text):
 
 # Returns the number of sentences in the text
 def sentence_count(text):
+    # TODO: Investigate why text is pulling through as object reference.
     sentences = break_sentences(text)
     return len(sentences)
 
