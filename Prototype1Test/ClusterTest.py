@@ -26,7 +26,7 @@ def cluster_texts(texts, clusters=3):
     """ Transform texts to Tf-Idf coordinates and cluster texts using K-Means """
     vectorizer = TfidfVectorizer(tokenizer=process_text,
                                  stop_words=stopwords.words('english'),
-                                 max_df=0.5,
+                                 max_df=0.95 ,
                                  min_df=0.1,
                                  lowercase=True)
 
@@ -45,5 +45,5 @@ def cluster_texts(texts, clusters=3):
 if __name__ == "__main__":
     inputText = open("TestSentences.txt").read()
     articles = [inputText]
-    clusters = cluster_texts(articles, 7)
+    clusters = cluster_texts(articles, 5)
     pprint(dict(clusters))
