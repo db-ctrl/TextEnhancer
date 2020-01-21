@@ -3,4 +3,4 @@
 </n>
 <B> --------------------------------------------------- My dissertation project ------------------------------------------------------</B>
 </n>
-A quest to create a tool to improve the readability of generated sentences.
+A quest, pursuing a tool to improve the readability of generated sentences.
