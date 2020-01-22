@@ -43,7 +43,14 @@ def cluster_texts(texts, clusters=3):
 
 
 if __name__ == "__main__":
-    inputText = open("TestSentences.txt").read()
-    articles = [inputText]
-    clusters = cluster_texts(articles, 5)
+    #inputText = open("TestSentences.txt").read()
+    #articles = [inputText]
+    clusters = cluster_texts(["This little kitty came to play when I was eating at a restaurant.",
+             "Merley has the best squooshy kitten belly.",
+             "Google Translate app is incredible.",
+             "If you open 100 tab in google you get a smiley face.",
+             "Best cat photo I've ever taken.",
+             "Climbing ninja cat.",
+             "Impressed with google map feedback.",
+             "Key promoter extension for Google Chrome."], 5)
     pprint(dict(clusters))
