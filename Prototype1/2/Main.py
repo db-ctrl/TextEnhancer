@@ -7,6 +7,6 @@ from Prototype1Test import SpacyFuncs
 with open("t.txt") as f:
     text = f.read()
 
-print(SpacyFuncs.flesch_reading_ease("My name is David. My Teacher is Gabor. I like to write sentences."))
+print(SpacyFuncs.break_sentences(text))
 
 
