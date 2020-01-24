@@ -7,10 +7,15 @@ from textstat.textstat import textstatistics, easy_word_set, legacy_round
 # be found at https://spacy.io/usage/spacy-101
 
 def break_sentences(text):
-    nlp = spacy.load('en_core_web_sm')
-    doc = nlp(text)
-    return doc.sents
+    # Old nlp loading method
+    # nlp = spacy.load('en-core-web-sm')
 
+    import en_core_web_sm
+    nlp = en_core_web_sm.load()
+    doc = nlp(text)
+
+    # I don't know why this works, but it does.
+    return doc.text
 
 # Returns Number of Words in the text
 def word_count(text):
