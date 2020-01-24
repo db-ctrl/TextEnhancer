@@ -7,6 +7,6 @@ from Prototype1Test import SpacyFuncs
 with open("t.txt") as f:
     text = f.read()
 
-print(SpacyFuncs.break_sentences(text))
+print(SpacyFuncs.dale_chall_readability_score(text))
 
 

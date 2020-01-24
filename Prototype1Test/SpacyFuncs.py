@@ -14,7 +14,8 @@ def break_sentences(text):
     nlp = en_core_web_sm.load()
     doc = nlp(text)
 # TODO: Need to investigate where the sentences are stored inside doc.
-    return doc.sents
+    sentences = list(doc.sents)
+    return sentences
 
 # Returns Number of Words in the text
 def word_count(text):
@@ -143,8 +144,10 @@ def dale_chall_readability_score(text):
             ASL = Average sentence length
     """
     words = word_count(text)
+    # Difficult words
+    difficultWords = difficult_words(text)
     # Number of words not termed as difficult words
-    count = word_count - difficult_words(text)
+    count = words - difficultWords
     if words > 0:
         # Percentage of words not on difficult word list
 
@@ -163,4 +166,4 @@ def dale_chall_readability_score(text):
     if diff_words > 5:
         raw_score += 3.6365
 
-    return legacy_round(score, 2)
+    return legacy_round(raw_score, 2)
