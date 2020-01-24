@@ -1,6 +1,10 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 from sklearn.metrics import adjusted_rand_score
+from Prototype1Test import SpacyFuncs
+# Get raw text as string.
+with open("t.txt") as f:
+    text = f.read()
 
 documents = ["This little kitty came to play when I was eating at a restaurant.",
              "Merley has the best squooshy kitten belly.",
