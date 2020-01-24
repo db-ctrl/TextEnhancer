@@ -3,8 +3,8 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import adjusted_rand_score
 from Prototype1Test import SpacyFuncs
 # Get raw text as string.
-with open("t.txt") as f:
-    text = f.read()
+#with open("t.txt") as f:
+ #   text = f.read()
 
 documents = ["This little kitty came to play when I was eating at a restaurant.",
              "Merley has the best squooshy kitten belly.",
@@ -35,7 +35,7 @@ print("\n")
 print("Prediction")
 
 sentence1 = "chrome browser to open."
-sentence2 = "My cat is hungry."
+sentence2 = "My cat is hungry for google chrome."
 
 Y = vectorizer.transform([sentence1])
 prediction = model.predict(Y)
