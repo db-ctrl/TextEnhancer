@@ -1,4 +1,5 @@
 import spacy
+import re
 from textstat.textstat import textstatistics, easy_word_set, legacy_round
 
 
@@ -16,9 +17,14 @@ def break_sentences(text):
 # TODO: Need to investigate where the sentences are stored inside doc.
     sentences = []
 
-    for x in range(0,100):
-        sentences.append(doc.ents[x].sent)
+    for x in range(0, 100):
+        single = str(doc.ents[x].sent)
+        #single = single.strip().replace('\n', '')
+        #single = single.strip().replace('\'', '')
 
+        single = re.sub('(\')|(\n)', '', single)
+
+        sentences.append("\"" + single + "\"")
     return sentences
 
 # Returns Number of Words in the text
@@ -32,7 +38,6 @@ def word_count(text):
 
 # Returns the number of sentences in the text
 def sentence_count(text):
-    # TODO: Investigate why text is pulling through as object reference.
     sentences = break_sentences(text)
     return len(sentences)
 
