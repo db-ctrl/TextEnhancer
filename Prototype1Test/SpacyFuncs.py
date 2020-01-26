@@ -14,7 +14,11 @@ def break_sentences(text):
     nlp = en_core_web_sm.load()
     doc = nlp(text)
 # TODO: Need to investigate where the sentences are stored inside doc.
-    sentences = list(doc.sents)
+    sentences = []
+
+    for x in range(0,100):
+        sentences.append(doc.ents[x].sent)
+
     return sentences
 
 # Returns Number of Words in the text
