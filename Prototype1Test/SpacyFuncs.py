@@ -14,13 +14,10 @@ def break_sentences(text):
     import en_core_web_sm
     nlp = en_core_web_sm.load()
     doc = nlp(text)
-# TODO: Need to investigate where the sentences are stored inside doc.
     sentences = []
 
     for x in range(0, 100):
         single = str(doc.ents[x].sent)
-        #single = single.strip().replace('\n', '')
-        #single = single.strip().replace('\'', '')
 
         single = re.sub('(\')|(\n)', '', single)
 

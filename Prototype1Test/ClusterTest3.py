@@ -8,11 +8,14 @@ from Prototype1Test import SpacyFuncs
 
 from Prototype1Test import SpacyFuncs
 # Get raw text as string.
-with open("t.txt") as f:
-    text = f.read()
+with open("t3.txt") as f:
+    rawtext = f.read()
 
-# TODO Make documents file input as text file
-documents = text
+# Convert sentence string into iterable list
+#TODO : Investigate whether oneline text is causing issue with split
+sentList = rawtext.split(",")
+
+documents = sentList
 
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(documents)

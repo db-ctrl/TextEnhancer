@@ -7,6 +7,6 @@ from Prototype1Test import SpacyFuncs
 with open("t.txt") as f:
     text = f.read()
 
-print(SpacyFuncs.break_sentences(text))
+print(SpacyFuncs.break_sentences(text),  file=open('blank.txt', 'w'))
 
 
