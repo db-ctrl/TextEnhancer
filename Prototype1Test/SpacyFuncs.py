@@ -21,6 +21,8 @@ def break_sentences(text):
 
         single = re.sub('(\')|(\n)', '', single)
 
+        #single = single[1:-1]         removes 1st and last element from the string
+
         sentences.append("\"" + single + "\"")
     return sentences
 
