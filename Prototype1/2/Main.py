@@ -6,7 +6,7 @@ from Prototype1Test import SpacyFuncs
 # Get raw text as string.
 with open("t.txt") as f:
     text = f.read()
-#,  file=open('blank.txt', 'w')
-print(SpacyFuncs.break_sentences(text))
+
+print(SpacyFuncs.break_sentences(text,  file=open('blank.txt', 'w')))
 
 
