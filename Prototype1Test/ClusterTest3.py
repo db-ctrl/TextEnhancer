@@ -8,19 +8,19 @@ from Prototype1Test import SpacyFuncs
 
 from Prototype1Test import SpacyFuncs
 # Get raw text as string.
-with open("t3.txt") as f:
+with open("blank.txt") as f:
     rawtext = f.read()
 
 # Convert sentence string into iterable list
-#TODO : Investigate whether oneline text is causing issue with split
 sentList = rawtext.split(",")
 
+#TODO: Invert the terms to Documents. Output should be sentences
 documents = sentList
 
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(documents)
 
-true_k = 2
+true_k = 9
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
 model.fit(X)
 
@@ -36,8 +36,8 @@ for i in range(true_k):
 print("\n")
 print("Prediction")
 
-sentence1 = "chrome browser to open."
-sentence2 = "My cat is hungry for google chrome."
+sentence1 = "Mr dursley is a nasty man"
+sentence2 = "harry potter stole my wife."
 
 Y = vectorizer.transform([sentence1])
 prediction = model.predict(Y)
