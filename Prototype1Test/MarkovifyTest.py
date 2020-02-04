@@ -18,7 +18,6 @@ for i in range(5):
 for i in range(3):
     print(text_model.make_short_sentence(280))
 
-
 #print(Predict.getSent(model, 100, 4))
 
 
