@@ -16,14 +16,15 @@ def break_sentences(text):
     doc = nlp(text)
     sentences = []
 
-    for x in range(0, 100):
+# Collect a range of sentences (2, because that's where the sents start being unique"
+    for x in range(2, 100):
         single = str(doc.ents[x].sent)
 
-        single = re.sub('(\')|(\n)', '', single)
-
-        #single = single[1:-1]         removes 1st and last element from the string
-
+        single = re.sub('(\')', '', single)
+        single = re.sub('(\n)', ' ', single)
+        
         sentences.append("\"" + single + "\"")
+
     return sentences
 
 # Returns Number of Words in the text

@@ -14,7 +14,6 @@ with open("blank.txt") as f:
 # Convert sentence string into iterable list
 sentList = rawtext.split(",")
 
-#TODO: Invert the terms to Documents. Output should be sentences
 documents = sentList
 
 vectorizer = TfidfVectorizer(stop_words='english')
