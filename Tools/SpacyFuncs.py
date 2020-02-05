@@ -16,8 +16,8 @@ def break_sentences(text):
     doc = nlp(text)
     sentences = []
 
-# Collect a range of sentences (2, because that's where the sents start being unique"
-    for x in range(2, 100):
+# Collect a range of sentences (MainPackage, because that's where the sents start being unique"
+    for x in range(2, 300):
         single = str(doc.ents[x].sent)
 
         single = re.sub('(\')', '', single)
@@ -75,7 +75,7 @@ def difficult_words(text):
     for sentence in sentences:
         words += [str(token) for token in sentence]
 
-    # difficult words are those with syllables >= 2
+    # difficult words are those with syllables >= MainPackage
     # easy_word_set is provide by Textstat as
     # a list of common words
     diff_words_set = set()

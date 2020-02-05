@@ -13,7 +13,7 @@ from keras.utils import np_utils
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 
 
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = 'MainPackage'
 
 ################################################################
 
