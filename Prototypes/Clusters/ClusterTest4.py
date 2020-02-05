@@ -27,18 +27,20 @@ for i in range(true_k):
     print
 
 print("\n")
-print("Prediction")
+print("Prediction: ")
 
-sentence1 = "Mr dursley is a nasty man"
-sentence2 = "harry potter stole my wife."
+# TODO: Make catch for blank spaces at end of sentences
 
-# TODO : investigate how the dotPredict module works (pursuing) sentence labelling.
+sentence1 = "Dumbledore turned and walked back down the street."
 
-Y = vectorizer.transform([sentence1])
-prediction = model.predict(Y)
-print("The Sentence:", sentence1, prediction)
+wordList = sentence1.split(" ")
 
-Y = vectorizer.transform([sentence2])
-prediction = model.predict(Y)
-print("The Sentence:", sentence2, prediction)
+# TODO : Make for loop, iterate through words of sentence
+for i in wordList:
+    Y = vectorizer.transform([sentence1])
+    prediction = model.predict(Y)
+
+    print("The Sentence: '", sentence1, "'", ", is most likely to occur in cluster: ", prediction)
+
+
 
