@@ -27,20 +27,28 @@ for i in range(true_k):
     print
 
 print("\n")
-print("Prediction: ")
+print("Cluster to word mapping: ")
 
 # TODO: Make catch for blank spaces at end of sentences
 
-sentence1 = "Dumbledore turned and walked back down the street."
+sentence1 = "Mr. Dursley hummed as he picked out his most boring tie for work."
 
 wordList = sentence1.split(" ")
+out_str = ''
+# TODO : Make nested for multiple sentences
 
-# TODO : Make for loop, iterate through words of sentence
+# TODO: investigate csrMatrix issue
 for i in wordList:
-    Y = vectorizer.transform([sentence1])
-    prediction = model.predict(Y)
 
-    print("The Sentence: '", sentence1, "'", ", is most likely to occur in cluster: ", prediction)
+    Y = vectorizer.transform([i])
+    prediction = model.predict(Y)
+    out_str += str(i)
+    out_str += str(prediction)
+    out_str += " "
+
+print(out_str)
+
+
 
 
 
