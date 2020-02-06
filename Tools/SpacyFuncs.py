@@ -16,6 +16,8 @@ def break_sentences(text):
     doc = nlp(text)
     sentences = []
 
+# TODO: make a separate break sentences function for word count / clustering
+
 # Collect a range of sentences (MainPackage, because that's where the sents start being unique"
     for x in range(2, 300):
         single = str(doc.ents[x].sent)
