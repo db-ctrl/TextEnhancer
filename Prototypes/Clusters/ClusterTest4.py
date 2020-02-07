@@ -31,20 +31,25 @@ print("Cluster to word mapping: ")
 
 # TODO: Make catch for blank spaces at end of sentences
 
-sentence1 = "Harry Potter could not figure out if he was a wizard"
+sentence1 = "Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much."
 
 wordList = sentence1.split(" ")
 out_str = ''
 # TODO : Make nested for multiple sentences
 
-# TODO: investigate csrMatrix issue
-for i in wordList:
+# TODO: investigate where 'Terms' are used in relation to clusters (see what attributes are reduced , e.g. and)
 
+for i in wordList:
     Y = vectorizer.transform([i])
-    prediction = model.predict(Y)
-    out_str += str(i)
-    out_str += str(prediction)
-    out_str += " "
+    if i not in terms:
+        out_str += str(i)
+        out_str += "[N/A]"
+        out_str += " "
+    else:
+        prediction = model.predict(Y)
+        out_str += str(i)
+        out_str += str(prediction)
+        out_str += " "
 
 print(out_str)
 
