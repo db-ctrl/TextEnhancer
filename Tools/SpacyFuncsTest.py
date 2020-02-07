@@ -21,17 +21,16 @@ def break_sentences(text):
     import en_core_web_sm
     nlp = en_core_web_sm.load()
     doc = nlp(text)
-    sentences = []
+    sentences = [sent.string.strip() for sent in doc.sents]
 # TODO: make a separate break sentences function for word count / clustering
 
 # Collect a range of sentences (MainPackage, because that's where the sents start being unique"
-    for x in range(2, 300):
-        single = str(doc.ents[x].sent)
+    for sent in sentences:
+        single = str(sent)
 
         single = re.sub('(\')', '', single)
         single = re.sub('(\n)', ' ', single)
-        
-        sentences.append("\"" + single + "\"")
+        single = ("\"" + single + "\"")
 
     return sentences
 
