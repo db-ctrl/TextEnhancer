@@ -1,11 +1,18 @@
-from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
-
+from sklearn.cluster import KMeans
+from sklearn.metrics import adjusted_rand_score
+from Prototype1Test import SpacyFuncs
 # Get raw text as string.
-with open("blank.txt") as f:
+#with open("t.txt") as f:
+ #   text = f.read()
+
+from Prototype1Test import SpacyFuncs
+# Get raw text as string.
+with open("t3.txt") as f:
     rawtext = f.read()
 
 # Convert sentence string into iterable list
+#TODO : Investigate whether oneline text is causing issue with split
 sentList = rawtext.split(",")
 
 documents = sentList
@@ -13,7 +20,7 @@ documents = sentList
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(documents)
 
-true_k = 10
+true_k = 2
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
 model.fit(X)
 
@@ -27,28 +34,15 @@ for i in range(true_k):
     print
 
 print("\n")
-print("Cluster to word mapping: ")
+print("Prediction")
 
-# TODO: Make catch for blank spaces at end of sentences
+sentence1 = "chrome browser to open."
+sentence2 = "My cat is hungry for google chrome."
 
-sentence1 = "Mr. Dursley hummed as he picked out his most boring tie for work."
+Y = vectorizer.transform([sentence1])
+prediction = model.predict(Y)
+print("The Sentence:", sentence1, prediction)
 
-wordList = sentence1.split(" ")
-out_str = ''
-# TODO : Make nested for multiple sentences
-
-# TODO: investigate csrMatrix issue
-for i in wordList:
-
-    Y = vectorizer.transform([i])
-    prediction = model.predict(Y)
-    out_str += str(i)
-    out_str += str(prediction)
-    out_str += " "
-
-print(out_str)
-
-
-
-
-
+Y = vectorizer.transform([sentence2])
+prediction = model.predict(Y)
+print("The Sentence:", sentence2, prediction)
