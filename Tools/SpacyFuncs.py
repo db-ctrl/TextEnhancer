@@ -7,14 +7,13 @@ from textstat.textstat import textstatistics, easy_word_set, legacy_round
 # Spacy's sentence segmentation which can
 # be found at https://spacy.io/usage/spacy-101
 
-def break_sentencesWC(text):
+def break_sentences2(text):
 
     import en_core_web_sm
     nlp = en_core_web_sm.load()
     doc = nlp(text)
-
-    #todo Ensure below line is robust
-    return doc.text
+    sentences = [sent.string.strip() for sent in doc.sents]
+    return sentences
 
 
 def break_sentences(text):
@@ -25,7 +24,6 @@ def break_sentences(text):
     nlp = en_core_web_sm.load()
     doc = nlp(text)
     sentences = []
-
 # TODO: make a separate break sentences function for word count / clustering
 
 # Collect a range of sentences (MainPackage, because that's where the sents start being unique"
@@ -41,10 +39,10 @@ def break_sentences(text):
 
 # Returns Number of Words in the text
 def word_count(text):
-    sentences = break_sentencesWC(text)
+    sentences = break_sentences2(text)
     words = 0
     for sentence in sentences:
-        words += len([token for token in sentence])
+        words += len(re.findall(r'\w+', sentence))
     return words
 
 
