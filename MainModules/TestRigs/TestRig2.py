@@ -1,5 +1,5 @@
-from Tools import SpacyFuncs
+from Tools import SpacyFuncsTest
 
 with open("p.txt") as f:
     text = f.read()
-print(SpacyFuncs.word_count(text))
+print(SpacyFuncsTest.flesch_reading_ease(text))

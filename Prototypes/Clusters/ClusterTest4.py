@@ -1,11 +1,19 @@
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import TfidfVectorizer
 
+# TODO: Update corpus to non spanish harry potter (Idiot!)
+
 # Get raw text as string.
 with open("blank.txt") as f:
     rawtext = f.read()
 
 # Convert sentence string into iterable list
+
+# TODO: Ensure below is pulling through full sentences
+
+#Splits via comma
+# sentList = rawtext.split(",")
+
 sentList = rawtext.split(",")
 
 documents = sentList

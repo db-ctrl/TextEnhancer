@@ -6,8 +6,8 @@ documents = ["This little kitty came to play when I was eating at a restaurant."
              "Merley has the best squooshy kitten belly.",
              "Google Translate app is incredible.",
              "If you open 100 tab in google you get a smiley face.",
-             "Best cat photo I've ever taken.",
-             "Climbing ninja cat.",
+             "Best cat photo i've ever taken.",
+             "Climbing, ninja cat.",
              "Impressed with google map feedback.",
              "Key promoter extension for Google Chrome."]
 
