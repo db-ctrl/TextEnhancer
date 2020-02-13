@@ -15,7 +15,6 @@ def break_sentences2(text):
     sentences = [sent.string.strip() for sent in doc.sents]
     return sentences
 
-
 def break_sentences(text):
 
     import en_core_web_sm
@@ -24,14 +23,13 @@ def break_sentences(text):
     sentences = []
 # TODO: make a separate break sentences function for word count / clustering
 
-# Collect a range of sentences (MainPackage, because that's where the sents start being unique"
-    for x in range(2, 300):
-        single = str(doc.ents[x].sent)
+    for sent in doc.sents:
 
-        single = re.sub('(\')', '', single)
-        single = re.sub('(\n)', ' ', single)
+        single = sent.string.strip()
+        #single = re.sub('(\')', '', single)
+        #single = re.sub('(\n)', ' ', single)
         
-        sentences.append("\"" + single + "\"")
+        sentences.append("\"" + single + "\",")
 
     return sentences
 
