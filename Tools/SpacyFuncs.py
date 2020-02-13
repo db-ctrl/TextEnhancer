@@ -2,40 +2,36 @@ import spacy
 import re
 from textstat.textstat import textstatistics, easy_word_set, legacy_round
 
-
 # Splits the text into sentences, using
 # Spacy's sentence segmentation which can
 # be found at https://spacy.io/usage/spacy-101
 
-def break_sentences2(text):
-
-    import en_core_web_sm
-    nlp = en_core_web_sm.load()
-    doc = nlp(text)
-    sentences = [sent.string.strip() for sent in doc.sents]
-    return sentences
 
 def break_sentences(text):
-
     import en_core_web_sm
+
+    # removing all newlines
+    # TODO: fix "'", "'s Screams..." sentences
+    text = text.replace('\n', ' ')
+
+    # Configure document nlp
     nlp = en_core_web_sm.load()
     doc = nlp(text)
     sentences = []
-# TODO: make a separate break sentences function for word count / clustering
 
     for sent in doc.sents:
 
         single = sent.string.strip()
-        #single = re.sub('(\')', '', single)
-        #single = re.sub('(\n)', ' ', single)
-        
+
+        # TODO: Make catch for last  comma at end of list
+
         sentences.append("\"" + single + "\",")
 
     return sentences
 
 # Returns Number of Words in the text
 def word_count(text):
-    sentences = break_sentences2(text)
+    sentences = break_sentences(text)
     words = 0
     for sentence in sentences:
         words += len(re.findall(r'\w+', sentence))
@@ -46,7 +42,6 @@ def word_count(text):
 def sentence_count(text):
     sentences = break_sentences(text)
     return len(sentences)
-
 
 # Returns average sentence length
 def avg_sentence_length(text):
