@@ -1,7 +1,7 @@
 import markovify
 # Get raw text as string.
 
-with open("TestSentencesHPC1.txt", encoding="utf8") as f:
+with open("HP1FULLBOOK.txt") as f:
     text = f.read()
 
 # Build the model.
