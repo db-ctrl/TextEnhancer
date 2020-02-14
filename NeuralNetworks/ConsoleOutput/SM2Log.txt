@@ -1,0 +1,12 @@
+Using TensorFlow backend.
+Importing and sorting text...
+Done.
+Unique Characters: 42
+2020-02-14 12:08:18.698472: I C:\tf_jenkins\home\workspace\rel-win\M\windows\PY\36\tensorflow\core\platform\cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX AVX2
+Model loaded from /Users/david/PycharmProjects/LSTM-Text-Generator/NeuralNetworks/Models/SimpleModel 2.h5
+Generating text...
+----------------------------------------------------------------------------------------------------
+bours would say if the potters
+arrived in the street. the dursleys knew that the potters had a
+small son, too, but they was no the street to the siget and tat in the street to the siget and tat in the street to the siget and tat in the street to the siget and tat in the street to the siget and tat in the street to the siget and tat in the street to the siget and tat i
+----------------------------------------------------------------------------------------------------

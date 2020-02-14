@@ -46,7 +46,7 @@ EPOCHS = 20
 BATCH_SIZE = 120
 # Adam optimizer learning rate.
 # LEARN_RATE = 0.001
-LEARN_RATE = 0.002
+LEARN_RATE = 0.001
 # Threshold of   allowed with no loss improvement.
 EARLY_STOP = 3
 # Sequence starting point.
@@ -59,9 +59,9 @@ SEQUENCE_LENGTH = 120
 # PRED_LENGTH = 100
 PRED_LENGTH = 250
 # Flag for if loading model from file.
-LOAD_MODEL = False
+LOAD_MODEL = True
 # Flag for if training model.
-TRAINING = True
+TRAINING = False
 # Flag for if checking accuracy of model.
 TEST_ACC = False
 
