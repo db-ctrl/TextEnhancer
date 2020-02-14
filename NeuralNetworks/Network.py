@@ -24,13 +24,13 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = 'MainPackage'
 
 
 # Training text path.
-INPUT_TEXT_PATH = '/Users/david/PycharmProjects/db-Text-Generator/Input/sonnets.txt'
+INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/NeuralNetworks/Input/TestSentencesHPC1.txt'
 # Name models will save to / load from.
 # Make sure to include a space after the model name. ex: 'model '
 MODEL_NAME = 'SimpleModel '
 # Path where model will output to / load from. Will be h5 file-type.
-model_path_l = '/Users/david/PycharmProjects/db-Text-Generator/Models/'
-model_path_o = '/Users/david/PycharmProjects/db-Text-Generator/Models/'
+model_path_l = '/Users/david/PycharmProjects/LSTM-Text-Generator/NeuralNetworks/Models/'
+model_path_o = '/Users/david/PycharmProjects/LSTM-Text-Generator/NeuralNetworks/Models/'
 # Sequential saving toggle.
 # Sequential:
 # Load: Highest saved model number.
@@ -46,7 +46,7 @@ EPOCHS = 20
 BATCH_SIZE = 120
 # Adam optimizer learning rate.
 # LEARN_RATE = 0.001
-LEARN_RATE = 0.001
+LEARN_RATE = 0.002
 # Threshold of   allowed with no loss improvement.
 EARLY_STOP = 3
 # Sequence starting point.
@@ -95,7 +95,7 @@ else:
 # Import text to train with and set to lowercase.
 print("Importing and sorting text...")
 
-input_text = open(INPUT_TEXT_PATH).read()
+input_text = open(INPUT_TEXT_PATH, encoding="utf8").read()
 input_text = input_text.lower()
 
 # Map all unique characters to a number.

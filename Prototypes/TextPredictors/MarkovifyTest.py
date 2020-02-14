@@ -1,20 +1,20 @@
 import markovify
-from Prototype1Test import Predict
 # Get raw text as string.
-with open("RawText.txt") as f:
+
+with open("TestSentencesHPC1.txt", encoding="utf8") as f:
     text = f.read()
 
 # Build the model.
 text_model = markovify.Text(text)
-# generate 100 and choose the 5th. 1st line boring, hgh line it starts not making sense, so 5 seemed good.
-
 model = markovify.Text(text) # get your model as normal
 
 # Print five randomly-generated sentences
+print("\n" + "Random Sentences:" + "\n")
 for i in range(5):
     print(text_model.make_sentence())
 
 # Print three randomly-generated sentences of no more than 280 characters
+print("\n" + "Short Sentences:" + "\n")
 for i in range(3):
     print(text_model.make_short_sentence(280))
 

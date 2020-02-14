@@ -13,8 +13,8 @@ def break_sentences(text):
     # removing all newlines
     # TODO: fix "'", "'s Screams..." sentences
     text = text.replace('\n', ' ')
-    text = text.replace('‘', '"')
-    text = text.replace('’', '"')
+    # text = text.replace('‘', '"')
+    # text = text.replace('’', '"')
 
     # Configure document nlp
     nlp = en_core_web_sm.load()
