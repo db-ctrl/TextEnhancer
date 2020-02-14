@@ -46,7 +46,7 @@ EPOCHS = 20
 BATCH_SIZE = 120
 # Adam optimizer learning rate.
 # LEARN_RATE = 0.001
-LEARN_RATE = 0.002
+LEARN_RATE = 0.001
 # Threshold of   allowed with no loss improvement.
 EARLY_STOP = 3
 # Sequence starting point.
