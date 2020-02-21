@@ -1,10 +1,11 @@
 from sklearn.cluster import KMeans
+from scipy.stats import entropy
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-# TODO: Update corpus to non spanish harry potter (Idiot!)
+INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/Out_Docs.txt'
 
 # Get raw text as string.
-with open("blank.txt") as f:
+with open(INPUT_TEXT_PATH) as f:
     rawtext = f.read()
 
 # Convert sentence string into iterable list
@@ -39,13 +40,14 @@ print("Cluster to word mapping: ")
 
 # TODO: Make catch for blank spaces at end of sentences
 
-sentence1 = "Mr. and Mrs. Dursley, of number four, Privet Drive, were proud to say that they were perfectly normal, thank you very much."
+sentence1 = "lot ti sores and tp suederily as the wall and the cat hn a sery off houn the bat had been hare a siiht"
 
 wordList = sentence1.split(" ")
 out_str = ''
 # TODO : Make nested for multiple sentences
 
 # TODO: investigate where 'Terms' are used in relation to clusters (see what attributes are reduced , e.g. and)
+clustEnt = 0
 
 for i in wordList:
     Y = vectorizer.transform([i])
@@ -58,8 +60,9 @@ for i in wordList:
         out_str += str(i)
         out_str += str(prediction)
         out_str += " "
+        clustEnt + 1
 
-print(out_str)
+print(out_str, clustEnt)
 
 
 

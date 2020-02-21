@@ -11,7 +11,7 @@ def break_sentences(text):
     import en_core_web_sm
 
     # removing all newlines
-    # TODO: fix "'", "'s Screams..." sentences
+    # TODO: Cleanup edge cases (fix "'", "'s Screams..." sentences)
     text = text.replace('\n', ' ')
     # text = text.replace('‘', '"')
     # text = text.replace('’', '"')

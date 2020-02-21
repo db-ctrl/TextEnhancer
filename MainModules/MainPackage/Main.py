@@ -8,7 +8,7 @@ with open("t.txt") as f:
     text = f.read()
     f.close()
 
-file = open('blank.txt', 'w')
+file = open('Out_Docs.txt', 'w')
 
 str1 = ''.join(SpacyFuncs.break_sentences(text))
 

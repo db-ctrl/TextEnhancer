@@ -24,7 +24,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = 'MainPackage'
 
 
 # Training text path.
-INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/NeuralNetworks/Input/TestSentencesHPC1.txt'
+INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/NeuralNetworks/InputHP/HP1FULLBOOK.txt'
 # Name models will save to / load from.
 # Make sure to include a space after the model name. ex: 'model '
 MODEL_NAME = 'SimpleModel '
@@ -95,7 +95,7 @@ else:
 # Import text to train with and set to lowercase.
 print("Importing and sorting text...")
 
-input_text = open(INPUT_TEXT_PATH, encoding="utf8").read()
+input_text = open(INPUT_TEXT_PATH).read()
 input_text = input_text.lower()
 
 # Map all unique characters to a number.
