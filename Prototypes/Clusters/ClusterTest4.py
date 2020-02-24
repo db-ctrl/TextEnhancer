@@ -47,7 +47,7 @@ out_str = ''
 # TODO : Make nested for multiple sentences
 
 # TODO: investigate where 'Terms' are used in relation to clusters (see what attributes are reduced , e.g. and)
-clustEnt = 0
+
 
 for i in wordList:
     Y = vectorizer.transform([i])
@@ -60,9 +60,9 @@ for i in wordList:
         out_str += str(i)
         out_str += str(prediction)
         out_str += " "
-        clustEnt + 1
 
-print(out_str, clustEnt)
+print(out_str, entropy([10/10, 1/10], base=2))
+
 
 
 
