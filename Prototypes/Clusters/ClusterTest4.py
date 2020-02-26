@@ -4,7 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/Out_Docs.txt'
 
-sentence1 = "Harry and the Weasleys spent a happy afternoon having a furious snowball fight on the grounds."
+sentence1 = "Harry and the Weasleys spent a happy afternoon having a furious snowball fight on the grounds.".lower()
 
 # Get raw text as string.
 with open(INPUT_TEXT_PATH) as f:
@@ -36,15 +36,13 @@ for i in range(true_k):
     print("Cluster %d:" % i),
     for ind in order_centroids[i, :15]:
         print(' %s' % terms[ind])
+    if terms[ind] in wordList:
+        out_str += str(terms[ind])
+        out_str += str(" ")
+        out_str += ("Cluster %d:" % i)
 
 #TODO: Make for loop only print ONCE per cluster hit
 
-for w in wordList:
-    w = w.lower()
-    if w in terms[ind]:
-        out_str += str(w)
-        out_str += str(" ")
-        out_str += ("%d:" % i)
 print("\n")
 print("Cluster to word mapping: ")
 print(out_str)
