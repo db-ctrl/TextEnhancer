@@ -27,7 +27,7 @@ X = vectorizer.fit_transform(documents)
 
 
 
-true_k = 250
+true_k = 25
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
 model.fit(X)
 
@@ -60,9 +60,14 @@ print("Cluster to word mapping: ")
 print(out_str)
 print(wordsInClus)
 
-totalHits = dict(Counter(hitList))
 
-print(totalHits)
+sortedHits = [item for items, c in
+             Counter(hitList).most_common() for item in
+             [items] * c]
+
+totalHits2 = dict(Counter(sortedHits))
+
+print(totalHits2)
 
 
 
