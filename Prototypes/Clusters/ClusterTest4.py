@@ -6,6 +6,7 @@ from collections import Counter
 
 INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/Out_Docs.txt'
 
+# Test sentence
 sentence1 = "Harry said that dumbledore had let out a foul smell in the house".lower()
 
 # Get raw text as string.
@@ -25,7 +26,7 @@ wordsInClus = 0
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(documents)
 
-true_k = 300
+true_k = 250
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
 model.fit(X)
 
@@ -40,7 +41,7 @@ hitList = []
 for i in range(true_k):
     print("Cluster %d:" % i),
 # Print x amount of words from each cluster
-    for ind in order_centroids[i, :10]:
+    for ind in order_centroids[i, :20]:
         hitList.insert(ind, terms[ind])
         print(' %s' % terms[ind])
 
@@ -56,13 +57,16 @@ print("\n" + "Test sentence: " + "\n" + sentence1 + "\n")
 print("Cluster to word mapping: ")
 
 print(out_str)
-print(wordsInClus)
 
+print("Words in clusters: ")
+print(wordsInClus)
 
 sortedHits = [item for items, c in Counter(hitList).most_common() for item in [items] * c]
 
 totalHits = dict(Counter(sortedHits))
 
+
+print(totalHits.__len__())
 print(totalHits)
 
 
