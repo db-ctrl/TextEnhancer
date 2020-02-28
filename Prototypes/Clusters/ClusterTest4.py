@@ -6,7 +6,7 @@ from collections import Counter
 
 INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/Out_Docs.txt'
 
-sentence1 = "Harry and the Weasleys spent a happy afternoon having a furious snowball fight on the grounds.".lower()
+sentence1 = "Harry said that dumbledore had let out a foul smell in the house".lower()
 
 # Get raw text as string.
 with open(INPUT_TEXT_PATH) as f:
@@ -25,9 +25,7 @@ wordsInClus = 0
 vectorizer = TfidfVectorizer(stop_words='english')
 X = vectorizer.fit_transform(documents)
 
-
-
-true_k = 25
+true_k = 300
 model = KMeans(n_clusters=true_k, init='k-means++', max_iter=100, n_init=1)
 model.fit(X)
 
@@ -38,7 +36,7 @@ terms = vectorizer.get_feature_names()
 wordList = sentence1.split(" ")
 out_str = ''
 hitList = []
-# TODO Calculate how many times terms occour in each cluster, fill hitlist and then count instances
+# TODO: Follow stackexchange forum for entropy metrics
 for i in range(true_k):
     print("Cluster %d:" % i),
 # Print x amount of words from each cluster
@@ -61,13 +59,11 @@ print(out_str)
 print(wordsInClus)
 
 
-sortedHits = [item for items, c in
-             Counter(hitList).most_common() for item in
-             [items] * c]
+sortedHits = [item for items, c in Counter(hitList).most_common() for item in [items] * c]
 
-totalHits2 = dict(Counter(sortedHits))
+totalHits = dict(Counter(sortedHits))
 
-print(totalHits2)
+print(totalHits)
 
 
 
