@@ -8,7 +8,7 @@ from textstat.textstat import textstatistics, easy_word_set, legacy_round
 
 
 def break_sentences(text):
-    import en_core_web_sm
+    #import en_core_web_sm
 
     # removing all newlines
     # TODO: Cleanup edge cases (fix "'", "'s Screams..." sentences)

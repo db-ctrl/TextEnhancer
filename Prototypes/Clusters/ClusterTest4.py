@@ -15,6 +15,7 @@ with open(INPUT_TEXT_PATH) as f:
 
 # Convert sentence string into iterable list
 
+# TODO: Make Clustering a defined function with configurable parameters
 # TODO: Ensure below is pulling through full sentences
 
 sentList = rawtext.split(",")

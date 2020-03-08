@@ -4,7 +4,7 @@ import en_core_web_sm
 
 from Tools import SpacyFuncs
 # Get raw text as string.
-with open("t.txt") as f:
+with open("HP1.txt") as f:
     text = f.read()
     f.close()
 
