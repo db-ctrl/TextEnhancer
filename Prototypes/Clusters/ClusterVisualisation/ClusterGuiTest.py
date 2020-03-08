@@ -6,7 +6,7 @@ from sklearn.manifold import TSNE
 
 from Prototype1Test import SpacyFuncs
 # Get raw text as string.
-with open("Out_Docs.txt") as f:
+with open("sentsHP1.txt") as f:
     rawtext = f.read()
 
 # Convert sentence string into iterable list

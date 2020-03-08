@@ -8,7 +8,7 @@ with open("HP1.txt") as f:
     text = f.read()
     f.close()
 
-file = open('Out_Docs.txt', 'w')
+file = open('sentsHP1.txt', 'w')
 
 str1 = ''.join(SpacyFuncs.break_sentences(text))
 

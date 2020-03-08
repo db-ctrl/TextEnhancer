@@ -4,7 +4,7 @@ from scipy.stats import entropy
 from sklearn.feature_extraction.text import TfidfVectorizer
 from collections import Counter
 
-INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/Out_Docs.txt'
+INPUT_TEXT_PATH = '/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/sentsHP1.txt'
 
 # Test sentence
 sentence1 = "Harry said that dumbledore had let out a foul smell in the house".lower()
