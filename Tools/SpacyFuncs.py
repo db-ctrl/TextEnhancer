@@ -1,7 +1,7 @@
 import spacy
 import re
 from textstat.textstat import textstatistics, easy_word_set, legacy_round
-
+from spacy.lang.en import English
 # Splits the text into sentences, using
 # Spacy's sentence segmentation which can
 # be found at https://spacy.io/usage/spacy-101
@@ -17,7 +17,7 @@ def break_sentences(text):
     # text = text.replace('’', '"')
 
     # Configure document nlp
-    nlp = en_core_web_sm.load()
+    nlp = spacy.load("en_core_web_sm")
     doc = nlp(text)
     sentences = []
 

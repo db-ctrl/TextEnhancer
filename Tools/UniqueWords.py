@@ -1,6 +1,8 @@
 
 
-file = open("blank.txt", 'w')
-word_list = open("/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/HP1.txt").readlines()
-unique_words = set(word_list)
-print(unique_words.__len__())
+with open ("/Users/david/PycharmProjects/LSTM-Text-Generator/MainModules/MainPackage/HP5.txt", "r") as f:
+    # Get a list of lines in the file and covert it into a set
+    words = f.readlines()
+    count = len(words)
+
+print(count)
