@@ -12,7 +12,14 @@ file = open('sentsHP1.txt', 'w')
 
 str1 = ''.join(SpacyFuncs.break_sentences(text))
 
-file.write(str1)
+# Convert sentence string into iterable list
+
+# TODO: Ensure below is pulling through full sentences
+
+sentList = str1.split(",")
+documents = sentList
+
+file.write(documents)
 file.close()
 
 print(str1)
