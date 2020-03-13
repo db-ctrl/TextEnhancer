@@ -1,6 +1,11 @@
 
-list = ['the', 'end', 'of', 'the', 'few', 'door', 'the', 'end', 'of', 'the', 'aside', 'with', 'his', 'free', 'hand.', 'the', 'kitchen', 'door', 'opened']
 
-list2 = ['the', 'end', 'of', 'the', 'few', 'door', 'the', 'end', 'of', 'the', 'aside', 'with', 'his', 'free', 'hand.', 'the', 'kitchen', 'door', 'opened']
-list2.pop(0)
-print(' '.join(map(str, list)) + ' '.join(map(str, list2)))
+seed = ["h", "i"]
+
+clean_sent = ["m8", "wassup"]
+
+print(' '.join(map(str, seed)) + ' '.join(map(str, clean_sent)))
+
+print(seed[:1])
+
+
